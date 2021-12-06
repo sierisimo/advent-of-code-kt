@@ -10,7 +10,6 @@ fun GammaEpsilon.toDecimals(): Pair<Int, Int> = Pair(
     epsilon.binaryToDecimal()
 )
 
-
 fun String.binaryToDecimal(): Int = foldRight(Pair(0, 0)) { c, acc ->
     Pair(
         acc.first + 1,
@@ -38,7 +37,7 @@ fun main() {
         return gammaEpsilonValues.fold(Int::times)
     }
 
-    // test if implementation meets criteria from the description, like:
+//    test if implementation meets criteria from the description, like:
     val testInput = readInput("Day03_test")
     check(part1(testInput) == 198)
 
