@@ -27,3 +27,15 @@ fun <T, R> List<List<T>>.mapTranspose(mapFun: (T) -> R): List<List<R>> {
         else acc.zip(resultList) { a, b -> a + b }
     }
 }
+
+tailrec fun <T, R> List<T>.foldWhile(accumulator: R, predicate: (R) -> Boolean, transformation: (R, T) -> R): R {
+    return when {
+        this.isEmpty() -> accumulator
+        else -> {
+            val nextAcc = transformation(accumulator, first())
+            val tail = this.drop(1)
+            if (predicate(nextAcc)) tail.foldWhile(nextAcc, predicate, transformation)
+            else accumulator
+        }
+    }
+}
