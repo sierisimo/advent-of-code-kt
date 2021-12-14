@@ -39,3 +39,10 @@ tailrec fun <T, R> List<T>.foldWhile(accumulator: R, predicate: (R) -> Boolean, 
         }
     }
 }
+
+fun String.delimitedToInt(delimiter: String): List<Int> = splitMap(delimiter) { it.toInt() }
+
+fun <R> CharSequence.splitMap(
+    delimiter: String,
+    mapFun: (String) -> R
+): List<R> = split(delimiter).map(mapFun)

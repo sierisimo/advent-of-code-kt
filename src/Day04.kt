@@ -68,7 +68,7 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        val numbers = input.first().split(",").map(String::toInt)
+        val numbers = input.first().splitMap(",") { it.toInt() }
         val boards = recursiveBoards(input.drop(2))
         val winningBoards = Stack<Board>()
         numbers.foldWhile(false, { !it }) { _, n ->
